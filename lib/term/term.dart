@@ -1,2 +1,2 @@
-/// Term that make up the formula/expression
+/// Term that composes the formula/expression
 abstract class Term {}

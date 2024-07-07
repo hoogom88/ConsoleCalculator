@@ -1,5 +1,6 @@
 import 'package:console_calculator/calculator/basic_calculator.dart';
 import 'package:console_calculator/calculator/calculator.dart';
+import 'package:console_calculator/term/term.dart';
 import 'package:test/test.dart';
 
 import '../mock/expresssion_evaluator/mock_expression_evaluator.dart';
@@ -17,14 +18,14 @@ void main() {
   });
 
   group('BasicCalculator class', () {
-    group('calculate() method ', () {
+    group('calculate() method', () {
       test('Pass given expression to Tokenizer.tokenize()', () {
         // Given
         final List<String> expression = ['1', '+' '3'];
 
         // When
         basicCalculator.calculate(expression);
-        final passedParameter = tokenizer.tokenizeParameter;
+        final List<String >passedParameter = tokenizer.tokenizeParameter;
 
         // Then
         expect(passedParameter, expression);
@@ -36,7 +37,7 @@ void main() {
 
         // When
         basicCalculator.calculate(expression);
-        final callCount = tokenizer.tokenizeCallCount;
+        final int callCount = tokenizer.tokenizeCallCount;
 
         // Then
         expect(callCount, 1);
@@ -50,8 +51,8 @@ void main() {
 
         // When
         basicCalculator.calculate(expression);
-        final returnValue = tokenizer.tokenizeReturnValue;
-        final passedParameter = expressionEvaluator.evaluateParameter;
+        final List<Term> returnValue = tokenizer.tokenizeReturnValue;
+        final List<Term> passedParameter = expressionEvaluator.evaluateParameter;
 
         // Then
         expect(returnValue, passedParameter);
@@ -63,7 +64,7 @@ void main() {
 
         // When
         basicCalculator.calculate(expression);
-        final callCount = expressionEvaluator.evaluateCallCount;
+        final int callCount = expressionEvaluator.evaluateCallCount;
 
         // Then
         expect(callCount, 1);
@@ -74,8 +75,8 @@ void main() {
         final List<String> expression = ['1', '+', '3'];
 
         // When
-        final methodResult = basicCalculator.calculate(expression);
-        final returnValue = expressionEvaluator.evaluateReturnValue;
+        final String methodResult = basicCalculator.calculate(expression);
+        final double returnValue = expressionEvaluator.evaluateReturnValue;
 
         // Then
         expect(returnValue.toString(), methodResult);
