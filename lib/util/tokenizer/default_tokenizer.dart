@@ -48,7 +48,7 @@ class DefaultTokenizer implements Tokenizer {
         continue;
       }
 
-      // Unclassified input
+      // Unacceptable input
       throw SimpleBusinessException.invalidInput();
     }
 

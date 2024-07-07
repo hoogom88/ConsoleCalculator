@@ -1,5 +1,5 @@
-/// Main calculator that performs calculations on input
+/// Main calculator that performs calculations on input expression
 abstract interface class Calculator {
-  /// Calculate result of given expression
+  /// Returns result value of given expression
   String calculate(List<String> expression);
 }

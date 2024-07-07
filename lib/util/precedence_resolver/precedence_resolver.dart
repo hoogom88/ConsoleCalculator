@@ -1,6 +1,7 @@
 import 'package:console_calculator/term/operation/operation.dart';
 
 /// Provide precedence of Operation
+/// There is no variation in precedence
 class PrecedenceResolver {
 
   /// Returns precedence of given Operation
