@@ -8,9 +8,10 @@ import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/exception.dart';
 import 'package:console_calculator/util/tokenizer/tokenizer.dart';
 
+/// Breaks expression into Term using String index accessing and regular expression
+/// (only can tokenize double format number and +, -, /, *)
 class DefaultTokenizer implements Tokenizer {
 
-  // Tokenize input expression using String index accessing and regular expression
   @override
   List<Term> tokenize(List<String> expression) {
     List<Term> tokens = [];
@@ -52,7 +53,6 @@ class DefaultTokenizer implements Tokenizer {
       throw SimpleBusinessException.invalidInput();
     }
 
-    if (!_isTokenFormatValid(tokens)) throw SimpleBusinessException.invalidInput();
     return tokens;
   }
 
@@ -64,10 +64,5 @@ class DefaultTokenizer implements Tokenizer {
       '*' => Multiplication(),
       _ => throw SimpleBusinessException.invalidInput(),
     };
-  }
-
-  // Check input format is 'Operand Operation Operand'
-  bool _isTokenFormatValid(List<Term> tokens) {
-    return (tokens.length == 3 && tokens[0] is Operand && tokens[1] is Operation && tokens[2] is Operand);
   }
 }
