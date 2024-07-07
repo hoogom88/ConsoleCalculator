@@ -1,20 +1,23 @@
 import 'package:console_calculator/calculator/basic_calculator.dart';
 import 'package:console_calculator/calculator/calculator.dart';
-import 'package:console_calculator/term/term.dart';
+import 'package:console_calculator/util/exception.dart';
 import 'package:test/test.dart';
 
+import '../mock/expression_validator/mock_expression_validator.dart';
 import '../mock/expresssion_evaluator/mock_expression_evaluator.dart';
 import '../mock/util/tokenizer/mock_tokenizer.dart';
 
 void main() {
-  final MockExpressionEvaluator expressionEvaluator = MockExpressionEvaluator();
+  final MockExpressionEvaluator evaluator = MockExpressionEvaluator();
   final MockTokenizer tokenizer = MockTokenizer();
-  final Calculator basicCalculator = BasicCalculator(
-      expressionEvaluator: expressionEvaluator, tokenizer: tokenizer);
+  final MockExpressionValidator validator = MockExpressionValidator();
+  final Calculator basicCalculator =
+      BasicCalculator(expressionEvaluator: evaluator, tokenizer: tokenizer, expressionValidator: validator);
 
   setUp(() {
-    expressionEvaluator.resetMockData();
+    evaluator.resetMockData();
     tokenizer.resetMockData();
+    validator.resetMockData();
   });
 
   group('BasicCalculator class', () {
@@ -25,49 +28,76 @@ void main() {
 
         // When
         basicCalculator.calculate(expression);
-        final List<String >passedParameter = tokenizer.tokenizeParameter;
 
         // Then
-        expect(passedParameter, expression);
+        expect(tokenizer.tokenizeParameter, expression);
       });
 
-      test('Calls Tokenizer.tokenize() one time.', () {
+      test('Calls Tokenizer.tokenize() once.', () {
         // Given
         final List<String> expression = ['1', '+', '3'];
+        final expectedCallCount = 1;
 
         // When
         basicCalculator.calculate(expression);
-        final int callCount = tokenizer.tokenizeCallCount;
 
         // Then
-        expect(callCount, 1);
+        expect(tokenizer.tokenizeCallCount, expectedCallCount);
       });
 
-      test(
-          'Pass return value of Tokenizer.tokenize() to ExpressionEvaluator.evaluate()',
-          () {
+      test('Pass return value of Tokenizer.tokenize() to ExpressionValidator.validate()', () {
         // Given
         final List<String> expression = ['1', '+' '3'];
 
         // When
         basicCalculator.calculate(expression);
-        final List<Term> returnValue = tokenizer.tokenizeReturnValue;
-        final List<Term> passedParameter = expressionEvaluator.evaluateParameter;
 
         // Then
-        expect(returnValue, passedParameter);
+        expect(tokenizer.tokenizeReturnValue, validator.validateParameter);
       });
 
-      test('Calls ExpressionEvaluator.evaluate() one time.', () {
+      test('Calls ExpressionValidator.validate() once.', () {
         // Given
         final List<String> expression = ['1', '+', '3'];
+        final expectedCallCount = 1;
 
         // When
         basicCalculator.calculate(expression);
-        final int callCount = expressionEvaluator.evaluateCallCount;
 
         // Then
-        expect(callCount, 1);
+        expect(validator.validateCallCount, expectedCallCount);
+      });
+
+      test('If ExpressionValidator.validate() == false, throw SimpleBusinessException.syntaxError()', () {
+        // Given
+        final List<String> expression = ['1', '+' '+'];
+
+        // When Then
+        expect(() => basicCalculator.calculate(expression),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+      });
+
+      test('If ExpressionValidator.validate() == true, pass return value of Tokenizer.tokenize() to ExpressionEvaluator.evaluate()', () {
+        // Given
+        final List<String> expression = ['1', '+' '3'];
+
+        // When
+        basicCalculator.calculate(expression);
+
+        // Then
+        expect(tokenizer.tokenizeReturnValue, evaluator.evaluateParameter);
+      });
+
+      test('If ExpressionValidator.validate() == true, calls ExpressionEvaluator.evaluate() once.', () {
+        // Given
+        final List<String> expression = ['1', '+', '3'];
+        final expectedCallCount = 1;
+
+        // When
+        basicCalculator.calculate(expression);
+
+        // Then
+        expect(evaluator.evaluateCallCount, expectedCallCount);
       });
 
       test('Returns String converted return value of ExpressionEvaluator.evaluate()', () {
@@ -75,11 +105,10 @@ void main() {
         final List<String> expression = ['1', '+', '3'];
 
         // When
-        final String methodResult = basicCalculator.calculate(expression);
-        final double returnValue = expressionEvaluator.evaluateReturnValue;
+        final String result = basicCalculator.calculate(expression);
 
         // Then
-        expect(returnValue.toString(), methodResult);
+        expect(evaluator.evaluateReturnValue.toString(), result);
       });
     });
   });
