@@ -4,12 +4,12 @@ import 'package:console_calculator/term/term.dart';
 class MockExpressionValidator implements ExpressionValidator {
   int validateCallCount = 0;
   List<Term> validateParameter = [];
-  bool validateReturnValue = false;
+  bool validateReturnValue = true;
 
   void resetMockData() {
     validateCallCount = 0;
     validateParameter.clear();
-    validateReturnValue = false;
+    validateReturnValue = true;
   }
 
   @override

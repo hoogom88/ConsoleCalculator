@@ -17,6 +17,7 @@ void main() {
   setUp(() {
     evaluator.resetMockData();
     tokenizer.resetMockData();
+    // default validate return value is true
     validator.resetMockData();
   });
 
@@ -71,6 +72,7 @@ void main() {
       test('If ExpressionValidator.validate() == false, throw SimpleBusinessException.syntaxError()', () {
         // Given
         final List<String> expression = ['1', '+' '+'];
+        validator.validateReturnValue = false;
 
         // When Then
         expect(() => basicCalculator.calculate(expression),
