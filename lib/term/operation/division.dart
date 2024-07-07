@@ -3,7 +3,9 @@ import 'package:console_calculator/term/operation/operation.dart';
 
 /// Perform division with two operands
 /// Singleton
-class Division implements Operation {
+class Division extends Operation {
+  @override
+  final int requiredOperandNumber = 2;
   static final Division _instance = Division._();
 
   Division._();
@@ -13,7 +15,7 @@ class Division implements Operation {
   }
 
   @override
-  double execute(List<Operand> operands) {
+  Operand execute(List<Operand> operands) {
     // TODO: implement execute
     throw UnimplementedError();
   }

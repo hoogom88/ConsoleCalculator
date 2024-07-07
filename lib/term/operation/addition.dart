@@ -3,7 +3,9 @@ import 'package:console_calculator/term/operation/operation.dart';
 
 /// Perform addition with two operands
 /// Singleton
-class Addition implements Operation {
+class Addition extends Operation {
+  @override
+  final int requiredOperandNumber = 2;
   static final Addition _instance = Addition._();
 
   Addition._();
@@ -13,7 +15,7 @@ class Addition implements Operation {
   }
 
   @override
-  double execute(List<Operand> operands) {
+  Operand execute(List<Operand> operands) {
     // TODO: implement execute
     throw UnimplementedError();
   }

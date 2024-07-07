@@ -3,7 +3,9 @@ import 'package:console_calculator/term/operation/operation.dart';
 
 /// Perform multiplication with two operands
 /// Singleton
-class Multiplication implements Operation {
+class Multiplication extends Operation {
+  @override
+  final int requiredOperandNumber = 2;
   static final Multiplication _instance = Multiplication._();
 
   Multiplication._();
@@ -13,7 +15,7 @@ class Multiplication implements Operation {
   }
 
   @override
-  double execute(List<Operand> operands) {
+  Operand execute(List<Operand> operands) {
     // TODO: implement execute
     throw UnimplementedError();
   }
