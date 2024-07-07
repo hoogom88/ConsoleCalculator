@@ -1,11 +1,13 @@
 import 'package:console_calculator/term/operand/operand.dart';
 import 'package:console_calculator/term/operation/operation.dart';
 
-/// Perform division with two operands
+/// Perform division with two Operands
 /// Singleton
 class Division extends Operation {
   @override
   final int requiredOperandNumber = 2;
+  @override
+  final OperationType operationType = OperationType.division;
   static final Division _instance = Division._();
 
   Division._();
