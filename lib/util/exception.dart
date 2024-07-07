@@ -1,7 +1,8 @@
 /// Message for SimpleBusinessException
 enum ExceptionMessage {
   invalidInput('invalid input'),
-  overflow('overflow error');
+  overflow('overflow error'),
+  syntaxError('syntax error');
 
   const ExceptionMessage(this.message);
 
@@ -17,6 +18,9 @@ class SimpleBusinessException implements Exception {
 
   SimpleBusinessException.overflow()
       : message = ExceptionMessage.overflow;
+
+  SimpleBusinessException.syntaxError()
+      : message = ExceptionMessage.syntaxError;
 
   @override
   String toString() => 'CustomException: $message';
