@@ -1,5 +1,6 @@
 import 'package:console_calculator/calculator/calculator.dart';
 import 'package:console_calculator/expression_evaluator/expression_evaluator.dart';
+import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/tokenizer/tokenizer.dart';
 
 // Basic calculator perform calculate using ExpressionEvaluator and Tokenizer
@@ -13,6 +14,7 @@ class BasicCalculator implements Calculator {
 
   @override
   String calculate(List<String> expression) {
-    return '';
+    List<Term> expressionTokens = _tokenizer.tokenize(expression);
+    return _expressionEvaluator.evaluate(expressionTokens).toString();
   }
 }
