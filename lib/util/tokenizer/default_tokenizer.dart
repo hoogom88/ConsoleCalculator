@@ -29,7 +29,8 @@ class DefaultTokenizer implements Tokenizer {
           j++;
         }
 
-        if (j - i >= 15) throw SimpleBusinessException.invalidInput();
+        // Only allow number(length <= 14)
+        if (j - i >= termMaxLength) throw SimpleBusinessException.invalidInput();
 
         tokens.add(Operand(
             double.tryParse(expressionString.substring(i, j)) ?? (throw SimpleBusinessException.invalidInput())));
