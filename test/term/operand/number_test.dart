@@ -36,14 +36,16 @@ void main() {
         final String numberOverMaxLength3 = '123456.78901234';
         final String numberOverMaxLength4 = '123456.789012345';
 
-
         // When Then
-        expect(() => Number(numberOverMaxLength1), throwsA(isA<SimpleBusinessException>()));
-        expect(() => Number(numberOverMaxLength2), throwsA(isA<SimpleBusinessException>()));
-        expect(() => Number(numberOverMaxLength3), throwsA(isA<SimpleBusinessException>()));
-        expect(() => Number(numberOverMaxLength4), throwsA(isA<SimpleBusinessException>()));
+        expect(() => Number(numberOverMaxLength1),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.overflow)));
+        expect(() => Number(numberOverMaxLength2),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.overflow)));
+        expect(() => Number(numberOverMaxLength3),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.overflow)));
+        expect(() => Number(numberOverMaxLength4),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.overflow)));
       });
-
     });
   });
 }
