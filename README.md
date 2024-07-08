@@ -1,5 +1,11 @@
 # ConsoleCalculator
 ## 실행 방법
+`$ git clone https://github.com/hoogom88/ConsoleCalculator.git`  
+`$ cd ConsoleCalculator`  
+`$ dart pub get`  
+`$ cd bin`  
+`$ dart run console_calculator.dart [Operand] [Operation] [Operand]`  
+
 프로젝트의 bin 폴더에서 `dart run console_calculator.dart [Operand] [Operation] [Operand]` 를 입력하여 실행할 수 있습니다. 
 
 <br/>
