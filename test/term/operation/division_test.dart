@@ -22,11 +22,11 @@ void main() {
 
     // execute(List<Operand> operands)
     group('execute() method', () {
-      test('Returns Operand(value is result of operands[0] / operands[1] which can parsed to double)', () {
+      test('Returns Operand(value is result of operands[1] / operands[0] which can parsed to double)', () {
         // Given
-        final List<Operand> operands1 = [Number('123456789012'), Number('1')];
-        final List<Operand> operands2 = [Number('1234'), Number('1000000')];
-        final List<Operand> operands3 = [Number('123456.123'), Number('0.12589')];
+        final List<Operand> operands1 = [Number('1'), Number('123456789012')];
+        final List<Operand> operands2 = [Number('1000000'), Number('1234'), ];
+        final List<Operand> operands3 = [Number('0.12589'), Number('123456.123')];
         final Operand expectedResult1 = Number('123456789012.0');
         final Operand expectedResult2 = Number('0.001234');
         final Operand expectedResult3 = Number('980666.6375407');
