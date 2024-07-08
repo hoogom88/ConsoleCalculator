@@ -1,7 +1,6 @@
 import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operand/operand.dart';
 import 'package:console_calculator/term/operation/division.dart';
-import 'package:console_calculator/util/exception.dart';
 import 'package:test/test.dart';
 
 void main() {
