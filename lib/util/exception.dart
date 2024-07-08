@@ -2,7 +2,8 @@
 enum ExceptionMessage {
   invalidInput('invalid input'),
   overflow('overflow error'),
-  syntaxError('syntax error');
+  syntaxError('syntax error'),
+  undefinedError('undefined error');
 
   const ExceptionMessage(this.message);
 
@@ -22,6 +23,9 @@ class SimpleBusinessException implements Exception {
   SimpleBusinessException.syntaxError()
       : message = ExceptionMessage.syntaxError;
 
+  SimpleBusinessException.undefinedError()
+    : message = ExceptionMessage.undefinedError;
+
   @override
-  String toString() => 'CustomException: $message';
+  String toString() => 'SimpleBusinessException: $message';
 }
