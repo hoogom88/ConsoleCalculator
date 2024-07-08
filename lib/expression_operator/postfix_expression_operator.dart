@@ -1,4 +1,4 @@
-import 'package:console_calculator/expression_evaluator/expression_evaluator.dart';
+import 'package:console_calculator/expression_operator/expression_operator.dart';
 import 'package:console_calculator/term/term.dart';
 
 /// Evaluate a expression using postfix expression algorithm (to support tokenizing some complex operation (ex, trigonometric functions, differential, integrate)

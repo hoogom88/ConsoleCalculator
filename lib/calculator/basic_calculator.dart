@@ -1,5 +1,5 @@
 import 'package:console_calculator/calculator/calculator.dart';
-import 'package:console_calculator/expression_evaluator/expression_evaluator.dart';
+import 'package:console_calculator/expression_operator/expression_operator.dart';
 import 'package:console_calculator/expression_validator/expression_validator.dart';
 import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/exception.dart';

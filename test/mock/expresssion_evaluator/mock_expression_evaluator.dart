@@ -1,4 +1,4 @@
-import 'package:console_calculator/expression_evaluator/expression_evaluator.dart';
+import 'package:console_calculator/expression_operator/expression_operator.dart';
 import 'package:console_calculator/term/term.dart';
 
 class MockExpressionEvaluator implements ExpressionOperator {
