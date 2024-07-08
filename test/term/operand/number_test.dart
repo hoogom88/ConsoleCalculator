@@ -53,7 +53,7 @@ void main() {
         expect(result4.value == expectedResult4, isTrue);
       });
 
-      test('Throw SimpleBusinessException.invalidInput() if given String can\'t be parsed to double', () {
+      test('Throw SimpleBusinessException(\'invalidInput\') if given String can\'t be parsed to double', () {
         // Given
         final String numberOverMaxLength1 = '1234567890..12345';
         final String numberOverMaxLength2 = 'as56789012356';

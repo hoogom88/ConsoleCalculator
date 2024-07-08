@@ -14,19 +14,18 @@ class Number extends Operand {
 
   Number._(this.value);
 
-  /// Only value whose length is less than 15, not Nan, and finite
+  /// Throw SimpleBusinessException('invalidInput') if value can't parsed to double
+  /// (longer than 15 characters are truncated)
   factory Number(String value) {
-    if (value.length > _maxLength) throw SimpleBusinessException.overflow();
-    return Number._(value);
+    String subString = value.length <= _maxLength ? value : value.substring(0, 14);
+    if (double.tryParse(subString) == null) throw SimpleBusinessException.invalidInput();
+    return Number._(subString);
   }
 
   // implements by generator
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is Number &&
-          runtimeType == other.runtimeType &&
-          value == other.value;
+      identical(this, other) || other is Number && runtimeType == other.runtimeType && value == other.value;
 
   // implements by generator
   @override
