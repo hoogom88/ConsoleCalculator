@@ -5,6 +5,42 @@ import 'package:console_calculator/util/exception.dart';
 void main() {
   group('Number class', () {
     group('factory constructor Number()', () {
+      test('Throw SimpleBusinessException(\'invalidInput\') if given String contains invalid character (to check String is Infinite, NaN, null)', () {
+        // Given
+        final String numberOverMaxLength1 = double.infinity.toString();
+        final String numberOverMaxLength2 = double.negativeInfinity.toString();
+        final String numberOverMaxLength3 =  double.nan.toString();
+        final String numberOverMaxLength4 = null.toString();
+
+        // When Then
+        expect(() => Number(numberOverMaxLength1),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength2),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength3),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength4),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+      });
+
+      test('Throw SimpleBusinessException(\'invalidInput\') if given String can\'t be parsed to double', () {
+        // Given
+        final String numberOverMaxLength1 = '1234567890..12345';
+        final String numberOverMaxLength2 = 'as56789012356';
+        final String numberOverMaxLength3 = '123456.789014-';
+        final String numberOverMaxLength4 = '123456.734 5';
+
+        // When Then
+        expect(() => Number(numberOverMaxLength1),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength2),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength3),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+        expect(() => Number(numberOverMaxLength4),
+            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+      });
+
       test('Returns Number if given String can be parsed to double', () {
         // Given
         final String numberUnderMaxLength1 = '12345678901234';
@@ -51,24 +87,6 @@ void main() {
         expect(result2.value == expectedResult2, isTrue);
         expect(result3.value == expectedResult3, isTrue);
         expect(result4.value == expectedResult4, isTrue);
-      });
-
-      test('Throw SimpleBusinessException(\'invalidInput\') if given String can\'t be parsed to double', () {
-        // Given
-        final String numberOverMaxLength1 = '1234567890..12345';
-        final String numberOverMaxLength2 = 'as56789012356';
-        final String numberOverMaxLength3 = '123456.789014-';
-        final String numberOverMaxLength4 = '123456.734 5';
-
-        // When Then
-        expect(() => Number(numberOverMaxLength1),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => Number(numberOverMaxLength2),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => Number(numberOverMaxLength3),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => Number(numberOverMaxLength4),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
       });
     });
   });
