@@ -5,18 +5,20 @@ class MockExpressionValidator implements ExpressionValidator {
   int validateCallCount = 0;
   List<Term> validateParameter = [];
   bool validateReturnValue = true;
+  Exception? error;
 
   void resetMockData() {
     validateCallCount = 0;
     validateParameter.clear();
     validateReturnValue = true;
+    error = null;
   }
 
   @override
   bool validate(List<Term> expressionTokens) {
+    if (error != null) throw error!;
     validateCallCount++;
     validateParameter = expressionTokens;
     return validateReturnValue;
   }
-
 }

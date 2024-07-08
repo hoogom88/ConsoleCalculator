@@ -114,6 +114,34 @@ void main() {
         // Then
         expect(evaluator.evaluateReturnValue.toString(), result);
       });
+
+      test('Returns Error message if error occurred during calculate', () {
+        // Given
+        final List<String> expression = ['1', '+', '123'];
+
+        // When
+        validator.error = SimpleBusinessException.syntaxError();
+        final String result1 = basicCalculator.calculate(expression);
+
+        validator.error = SimpleBusinessException.overflow();
+        final String result2 = basicCalculator.calculate(expression);
+
+        validator.error = SimpleBusinessException.invalidInput();
+        final String result3 = basicCalculator.calculate(expression);
+
+        validator.error = SimpleBusinessException.undefinedError();
+        final String result4 = basicCalculator.calculate(expression);
+
+        validator.error = Exception();
+        final String result5 = basicCalculator.calculate(expression);
+
+        // Then
+        expect(result1 == ExceptionMessage.syntaxError.message, isTrue);
+        expect(result2 == ExceptionMessage.overflow.message, isTrue);
+        expect(result3 == ExceptionMessage.invalidInput.message, isTrue);
+        expect(result4 == ExceptionMessage.undefinedError.message, isTrue);
+        expect(result5 == ExceptionMessage.undefinedError.message, isTrue);
+      });
     });
   });
 }
