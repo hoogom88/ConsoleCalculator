@@ -1,4 +1,4 @@
-import 'package:console_calculator/term/operand/operand.dart';
+import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operation/addition.dart';
 import 'package:console_calculator/term/operation/division.dart';
 import 'package:console_calculator/term/operation/multiplication.dart';
@@ -15,7 +15,7 @@ void main() {
 
   group('DefaultTokenizer class', () {
     group('tokenizer() method', () {
-      // focus on operand tokenize
+      // focus on operand tokenize, it can tokenize only double format number ([0-9]+[.]?[0-9]*) and +,-/*
       test('Returns separated Terms(Operand or Operation) by space and symbol if given expression is valid - case1', () {
         // Given
         // integer input
@@ -24,21 +24,21 @@ void main() {
         final List<String> expression3 = ['12345678901234', '126584365', '32'];
         final List<String> expression4 = ['145', '0', '12345678901234'];
 
-        final List<Term> expectedResult1 = [Operand(1234567890123), Operand(2345), Operand(32)];
-        final List<Term> expectedResult2 = [Operand(145), Operand(65915654), Division()];
-        final List<Term> expectedResult3 = [Operand(12345678901234), Operand(126584365), Operand(32)];
-        final List<Term> expectedResult4 = [Operand(145), Operand(0), Operand(12345678901234)];
+        final List<Term> expectedResult1 = [Number('1234567890123'), Number('2345.'), Number('32')];
+        final List<Term> expectedResult2 = [Number('145'), Number('65915654'), Division()];
+        final List<Term> expectedResult3 = [Number('12345678901234'), Number('126584365'), Number('32')];
+        final List<Term> expectedResult4 = [Number('145'), Number('0'), Number('12345678901234')];
 
         // float input
         final List<String> expression7 = ['1234567890123.', '2345.', '32.'];
         final List<String> expression8 = ['0.145', '0.65915654', '/'];
-        final List<String> expression9 = ['12345678901234.', '1.26584365', '0.32'];
-        final List<String> expression10 = ['145', '0.0', '123456789012.34'];
+        final List<String> expression9 = ['1234567890123.', '1.26584365', '0.32'];
+        final List<String> expression10 = ['145', '0.0', '123456789012.3'];
 
-        final List<Term> expectedResult7 = [Operand(1234567890123), Operand(2345), Operand(32)];
-        final List<Term> expectedResult8 = [Operand(0.145), Operand(0.65915654), Division()];
-        final List<Term> expectedResult9 = [Operand(12345678901234), Operand(1.26584365), Operand(0.32)];
-        final List<Term> expectedResult10 = [Operand(145), Operand(0.0), Operand(123456789012.34)];
+        final List<Term> expectedResult7 = [Number('1234567890123.'), Number('2345.'), Number('32.')];
+        final List<Term> expectedResult8 = [Number('0.145'), Number('0.65915654'), Division()];
+        final List<Term> expectedResult9 = [Number('1234567890123.'), Number('1.26584365'), Number('0.32')];
+        final List<Term> expectedResult10 = [Number('145'), Number('0.0'), Number('123456789012.3')];
 
         // When
         final List<Term> result1 = tokenizer.tokenize(expression1);
@@ -61,7 +61,7 @@ void main() {
         expect(result10.equals(expectedResult10), isTrue);
       });
 
-      // focus on operation tokenize
+      // focus on operation tokenize, it can tokenize only double format number ([0-9]+[.]?[0-9]*) and +,-/*
       test('Returns separated Terms(Operand or Operation) by space and symbol if given expression is valid - case2', () {
         // Given
         final List<String> expression1 = ['+', '+', '/'];
@@ -90,45 +90,46 @@ void main() {
         expect(result5.equals(expectedResult5), isTrue);
       });
 
+      // it can't tokenize character without [0-9]+[.]?[0-9]* and +,-/*
       test('Throw SimpleBusinessException.invalidInput() if input Operand or Operation string is invalid', () {
         // Given
-        final List<String> expression1 = ['1as', '+', '32'];
-        final List<String> expression2 = ['145', ' ', '가나5'];
-        final List<String> expression3 = ['1234567890.1234', '#', '32'];
-        final List<String> expression4 = ['145', 'a', '1.2345678901234'];
-        final List<String> expression5 = ['1234567890.1234', '[', '32'];
-        final List<String> expression6 = ['145', '}', '1.2345678901234'];
-        final List<String> expression7 = ['90..62', '/', '654.12'];
-        final List<String> expression8 = ['145', '-', '가나5'];
-        final List<String> expression9 = ['1234567890.1234', '#', '32'];
-        final List<String> expression10 = ['145', 'a', '1.2345678901234'];
-        final List<String> expression11= ['1234567890.1234', '[', '32'];
-        final List<String> expression12 = ['145', '}', '1.2345678901234'];
+        final List<String> invalidExpression1 = ['1as', '+', '32'];
+        final List<String> invalidExpression2 = ['145', ' ', '가나5'];
+        final List<String> invalidExpression3 = ['1234567890..1234', '#', '32'];
+        final List<String> invalidExpression4 = ['145', 'a', '1.23456789012'];
+        final List<String> invalidExpression5 = ['12345678901234', '[', '32'];
+        final List<String> invalidExpression6 = ['145', '}', '1.23456789012'];
+        final List<String> invalidExpression7 = ['90..62', '/', '654.12'];
+        final List<String> invalidExpression8 = ['145', '-', '가나5'];
+        final List<String> invalidExpression9 = ['12345678901234', '#', '32'];
+        final List<String> invalidExpression10 = ['145', 'a', '1234567.89012'];
+        final List<String> invalidExpression11= ['1234567890.12', '[', '32'];
+        final List<String> invalidExpression12 = ['145', '}', '0.123456789012'];
 
         // When Then
-        expect(() => tokenizer.tokenize(expression1),
+        expect(() => tokenizer.tokenize(invalidExpression1),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression2),
+        expect(() => tokenizer.tokenize(invalidExpression2),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression3),
+        expect(() => tokenizer.tokenize(invalidExpression3),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression4),
+        expect(() => tokenizer.tokenize(invalidExpression4),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression5),
+        expect(() => tokenizer.tokenize(invalidExpression5),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression6),
+        expect(() => tokenizer.tokenize(invalidExpression6),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression7),
+        expect(() => tokenizer.tokenize(invalidExpression7),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression8),
+        expect(() => tokenizer.tokenize(invalidExpression8),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression9),
+        expect(() => tokenizer.tokenize(invalidExpression9),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression10),
+        expect(() => tokenizer.tokenize(invalidExpression10),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression11),
+        expect(() => tokenizer.tokenize(invalidExpression11),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
-        expect(() => tokenizer.tokenize(expression12),
+        expect(() => tokenizer.tokenize(invalidExpression12),
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
       });
     });

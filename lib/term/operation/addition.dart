@@ -1,3 +1,4 @@
+import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operand/operand.dart';
 import 'package:console_calculator/term/operation/operation.dart';
 
@@ -18,7 +19,6 @@ class Addition extends Operation {
 
   @override
   Operand execute(List<Operand> operands) {
-    // TODO: implement execute
-    throw UnimplementedError();
+    return Number(operands[0].value + operands[1].value);
   }
 }

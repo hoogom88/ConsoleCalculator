@@ -1,4 +1,4 @@
-import 'package:console_calculator/term/operand/operand.dart';
+import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operation/addition.dart';
 import 'package:console_calculator/term/operation/division.dart';
 import 'package:console_calculator/term/operation/multiplication.dart';
@@ -9,7 +9,7 @@ import 'package:console_calculator/util/exception.dart';
 import 'package:console_calculator/util/tokenizer/tokenizer.dart';
 
 /// Breaks expression into Term using String index accessing and regular expression
-/// (only can tokenize double format number and +, -, /, *)
+/// (only can tokenize double format number ([0-9]+[.]?[0-9]*) and +,-/*
 class DefaultTokenizer implements Tokenizer {
 
   @override
@@ -30,8 +30,7 @@ class DefaultTokenizer implements Tokenizer {
           j++;
         }
 
-        tokens.add(Operand(
-            double.tryParse(expressionString.substring(i, j)) ?? (throw SimpleBusinessException.invalidInput())));
+        tokens.add(Number(expressionString.substring(i, j)));
         i = j;
         continue;
       }

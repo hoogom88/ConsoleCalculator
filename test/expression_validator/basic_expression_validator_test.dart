@@ -1,6 +1,6 @@
 import 'package:console_calculator/expression_validator/basic_expression_validator.dart';
 import 'package:console_calculator/expression_validator/expression_validator.dart';
-import 'package:console_calculator/term/operand/operand.dart';
+import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operation/addition.dart';
 import 'package:console_calculator/term/operation/operation.dart';
 import 'package:console_calculator/term/term.dart';
@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 
 void main() {
   final ExpressionValidator validator = BasicExpressionValidator();
-  final Operand operand = Operand(0.0);
+  final Number operand = Number('0.0');
   final Operation operation = Addition();
 
   group('BasicExpressionValidator class', () {
