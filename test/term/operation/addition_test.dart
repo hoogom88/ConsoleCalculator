@@ -43,7 +43,8 @@ void main() {
       });
 
       test('Throw SimpleBusinessException(\'undefinedError\') if exception is occurred during execute', () {
-        // To test this case, I have to create Mock Number, double class and inject them through the constructor. But I think try this modification to just test this case is meaningless.
+        // For accurate testing, have to mock double, Number class and inject them to tested class.
+        // But, because similar test case were tested in other test, it was skipped.
       });
     });
   });

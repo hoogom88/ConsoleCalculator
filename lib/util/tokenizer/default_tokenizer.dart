@@ -16,7 +16,7 @@ class DefaultTokenizer implements Tokenizer {
   List<Term> tokenize(List<String> expression) {
     List<Term> tokens = [];
 
-    // join elements to support tokenizing some complex operation (ex, trigonometric functions, differential, integrate)
+    // join elements to support tokenizing some any complex operation in future
     String expressionString = expression.join(' ');
 
     int i = 0;
