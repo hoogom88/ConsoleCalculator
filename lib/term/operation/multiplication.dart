@@ -1,5 +1,7 @@
+import 'package:console_calculator/term/operand/number.dart';
 import 'package:console_calculator/term/operand/operand.dart';
 import 'package:console_calculator/term/operation/operation.dart';
+import 'package:console_calculator/util/exception.dart';
 
 /// Perform multiplication with two Operands
 /// Singleton
@@ -18,7 +20,10 @@ class Multiplication extends Operation {
 
   @override
   Operand execute(List<Operand> operands) {
-    // TODO: implement execute
-    throw UnimplementedError();
+    try {
+      return Number((double.parse(operands[0].value) * double.parse(operands[1].value)).toString());
+    } catch (e) {
+      throw SimpleBusinessException.overflow();
+    }
   }
 }
