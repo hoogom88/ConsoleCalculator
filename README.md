@@ -95,11 +95,17 @@
 - 본 프로젝트는 펌웨어이며, 외부 데이터 요청, 저장 및 데이터 전달의 흐름이 없기 때문에 **주요 기능을 제공하는 객체**를 기준으로 Directory를 분리하였습니다.
 - 본 프로젝트는 과제이기 때문에 Github에서 타입을 확인할 수 있도록 `final` 키워드에도 타입을 명시하였습니다.
 
+### Test Coverage
+![image](https://github.com/hoogom88/ConsoleCalculator/assets/67893559/7cfe436b-add9-4eec-b93a-3a33b73e3b83)
+
+
 <br/>
 
 ## 기타
 - 입력과 출력에 대한 길이 제한이 주어지지 않아, 임의로 제한하였습니다.  
     (소수점을 포함한 최대 14자리)
 
-## 아쉬운점
-- Tokenizer, ExpressionValidator, ExpressionOperator 객체 생성 및 관리에 추상 팩토리 패턴을 적용하여 확장성을 향상시킬 수 있을 것 같습니다.
+<br/>
+
+## 아쉬운점/개선방향
+- Tokenizer, ExpressionValidator, ExpressionOperator 객체 조합 및 생성에 추상 팩토리 패턴을 적용하면, 객체 생성을 캡슐화 하고 연관된 기능을 제공하는 객체를 일괄 관리할 수 있습니다.
