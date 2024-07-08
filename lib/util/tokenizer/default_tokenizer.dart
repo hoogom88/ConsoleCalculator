@@ -29,8 +29,10 @@ class DefaultTokenizer implements Tokenizer {
         while (j < expressionString.length && RegExp(r'[0-9.]').hasMatch(expressionString[j])) {
           j++;
         }
+        final String subString = expressionString.substring(i, j);
+        if (subString.contains('..')) throw SimpleBusinessException.invalidInput();
 
-        tokens.add(Number(expressionString.substring(i, j)));
+        tokens.add(Number(subString));
         i = j;
         continue;
       }
