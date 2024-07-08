@@ -6,7 +6,7 @@ class PostfixExpressionOperator implements ExpressionOperator {
 
   // Evaluate expression by converting infix expression to postfix expression
   @override
-  double evaluate(List<Term> expressionTokens) {
+  String operate(List<Term> expressionTokens) {
     // TODO: implement evaluate
     throw UnimplementedError();
   }

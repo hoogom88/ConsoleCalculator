@@ -26,6 +26,6 @@ class BasicCalculator implements Calculator {
   String calculate(List<String> expression) {
     List<Term> expressionTokens = _tokenizer.tokenize(expression);
     if (!_expressionValidator.validate(expressionTokens)) throw SimpleBusinessException.syntaxError();
-    return _expressionEvaluator.evaluate(expressionTokens).toString();
+    return _expressionEvaluator.operate(expressionTokens);
   }
 }
