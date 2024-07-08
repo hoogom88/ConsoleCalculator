@@ -14,13 +14,13 @@ void main() {
 
         // When Then
         expect(() => Number(numberOverMaxLength1),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength2),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength3),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength4),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
       });
 
       test('Throw SimpleBusinessException(\'invalidInput\') if given String can\'t be parsed to double', () {
@@ -32,13 +32,13 @@ void main() {
 
         // When Then
         expect(() => Number(numberOverMaxLength1),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength2),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength3),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => Number(numberOverMaxLength4),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
       });
 
       test('Returns Number if given String can be parsed to double', () {

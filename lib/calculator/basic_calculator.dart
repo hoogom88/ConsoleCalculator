@@ -15,10 +15,10 @@ class BasicCalculator implements Calculator {
   final ExpressionValidator _expressionValidator;
 
   BasicCalculator(
-      {required ExpressionOperator expressionEvaluator,
+      {required ExpressionOperator expressionOperator,
       required Tokenizer tokenizer,
       required ExpressionValidator expressionValidator})
-      : _expressionEvaluator = expressionEvaluator,
+      : _expressionEvaluator = expressionOperator,
         _tokenizer = tokenizer,
         _expressionValidator = expressionValidator;
 

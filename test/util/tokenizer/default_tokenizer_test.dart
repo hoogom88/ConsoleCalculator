@@ -108,29 +108,29 @@ void main() {
 
         // When Then
         expect(() => tokenizer.tokenize(invalidExpression1),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression2),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression3),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression4),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression5),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression6),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression7),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression8),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression9),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression10),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression11),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
         expect(() => tokenizer.tokenize(invalidExpression12),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.invalidInput)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.invalidInput)));
       });
     });
   });

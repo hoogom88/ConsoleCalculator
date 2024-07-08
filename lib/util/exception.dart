@@ -12,20 +12,20 @@ enum ExceptionMessage {
 
 /// Simple exception which is considered a business exception
 class SimpleBusinessException implements Exception {
-  final ExceptionMessage message;
+  final ExceptionMessage exceptionMessage;
 
   SimpleBusinessException.invalidInput()
-      : message = ExceptionMessage.invalidInput;
+      : exceptionMessage = ExceptionMessage.invalidInput;
 
   SimpleBusinessException.overflow()
-      : message = ExceptionMessage.overflow;
+      : exceptionMessage = ExceptionMessage.overflow;
 
   SimpleBusinessException.syntaxError()
-      : message = ExceptionMessage.syntaxError;
+      : exceptionMessage = ExceptionMessage.syntaxError;
 
   SimpleBusinessException.undefinedError()
-    : message = ExceptionMessage.undefinedError;
+    : exceptionMessage = ExceptionMessage.undefinedError;
 
   @override
-  String toString() => 'SimpleBusinessException: $message';
+  String toString() => 'SimpleBusinessException: $exceptionMessage';
 }

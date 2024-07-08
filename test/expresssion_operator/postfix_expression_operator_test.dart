@@ -27,17 +27,17 @@ void main() {
 
         // When Then
         expect(() => expressionOperator.operate(incomputableExpression1),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
         expect(() => expressionOperator.operate(incomputableExpression2),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
         expect(() => expressionOperator.operate(incomputableExpression3),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
         expect(() => expressionOperator.operate(incomputableExpression4),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
         expect(() => expressionOperator.operate(incomputableExpression5),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
         expect(() => expressionOperator.operate(incomputableExpression6),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
       });
 
       test('Returns result of give expression using postfix expression if given infix expression is valid', () {

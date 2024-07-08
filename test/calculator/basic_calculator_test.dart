@@ -12,7 +12,7 @@ void main() {
   final MockTokenizer tokenizer = MockTokenizer();
   final MockExpressionValidator validator = MockExpressionValidator();
   final Calculator basicCalculator =
-      BasicCalculator(expressionEvaluator: evaluator, tokenizer: tokenizer, expressionValidator: validator);
+      BasicCalculator(expressionOperator: evaluator, tokenizer: tokenizer, expressionValidator: validator);
 
   setUp(() {
     evaluator.resetMockData();
@@ -76,7 +76,7 @@ void main() {
 
         // When Then
         expect(() => basicCalculator.calculate(expression),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
+            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
       });
 
       test(
