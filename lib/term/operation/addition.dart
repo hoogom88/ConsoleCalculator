@@ -23,7 +23,7 @@ class Addition extends Operation {
     try {
       return Number((double.parse(operands[0].value) + double.parse(operands[1].value)).toString());
     } catch (e) {
-      throw SimpleBusinessException.overflow();
+      throw SimpleBusinessException.undefinedError();
     }
   }
 }
