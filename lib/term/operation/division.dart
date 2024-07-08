@@ -21,7 +21,7 @@ class Division extends Operation {
   @override
   Operand execute(List<Operand> operands) {
     try {
-      return Number((double.parse(operands[0].value) / double.parse(operands[1].value)).toString());
+      return Number((double.parse(operands[1].value) / double.parse(operands[0].value)).toString());
     } catch (e) {
       throw SimpleBusinessException.overflow();
     }
