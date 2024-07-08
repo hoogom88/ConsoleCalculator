@@ -6,7 +6,7 @@ import 'package:console_calculator/term/operation/operation.dart';
 import 'package:console_calculator/term/operation/subtraction.dart';
 import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/exception.dart';
-import 'package:console_calculator/util/tokenizer/tokenizer.dart';
+import 'package:console_calculator/tokenizer/tokenizer.dart';
 
 /// Breaks expression into Term using String index accessing and regular expression
 /// (only can tokenize double format number ([0-9]+[.]?[0-9]*) and +,-/*

@@ -1,5 +1,5 @@
 import 'package:console_calculator/term/term.dart';
-import 'package:console_calculator/util/tokenizer/tokenizer.dart';
+import 'package:console_calculator/tokenizer/tokenizer.dart';
 
 class MockTokenizer implements Tokenizer {
   int tokenizeCallCount = 0;

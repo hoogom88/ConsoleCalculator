@@ -3,7 +3,7 @@ import 'package:console_calculator/expression_operator/expression_operator.dart'
 import 'package:console_calculator/expression_validator/expression_validator.dart';
 import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/exception.dart';
-import 'package:console_calculator/util/tokenizer/tokenizer.dart';
+import 'package:console_calculator/tokenizer/tokenizer.dart';
 
 /// Basic calculator perform calculate using ExpressionEvaluator, Tokenizer, ExpressionValidator
 /// (it only support [operand, operation, operand] expression)

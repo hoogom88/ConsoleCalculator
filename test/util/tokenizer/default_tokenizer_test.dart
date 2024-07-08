@@ -4,10 +4,10 @@ import 'package:console_calculator/term/operation/division.dart';
 import 'package:console_calculator/term/operation/multiplication.dart';
 import 'package:console_calculator/term/operation/subtraction.dart';
 import 'package:console_calculator/term/term.dart';
+import 'package:console_calculator/tokenizer/default_tokenizer.dart';
 import 'package:console_calculator/util/exception.dart';
 import 'package:console_calculator/util/extension/list_extension.dart';
-import 'package:console_calculator/util/tokenizer/default_tokenizer.dart';
-import 'package:console_calculator/util/tokenizer/tokenizer.dart';
+import 'package:console_calculator/tokenizer/tokenizer.dart';
 import 'package:test/test.dart';
 
 void main() {

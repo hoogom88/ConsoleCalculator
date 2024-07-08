@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 
 import '../mock/expression_validator/mock_expression_validator.dart';
 import '../mock/expresssion_evaluator/mock_expression_evaluator.dart';
-import '../mock/util/tokenizer/mock_tokenizer.dart';
+import '../mock/tokenizer/mock_tokenizer.dart';
 
 void main() {
   final MockExpressionEvaluator evaluator = MockExpressionEvaluator();
@@ -79,7 +79,9 @@ void main() {
             throwsA(predicate((e) => e is SimpleBusinessException && e.message == ExceptionMessage.syntaxError)));
       });
 
-      test('If ExpressionValidator.validate() == true, pass return value of Tokenizer.tokenize() to ExpressionEvaluator.evaluate()', () {
+      test(
+          'If ExpressionValidator.validate() == true, pass return value of Tokenizer.tokenize() to ExpressionEvaluator.evaluate()',
+          () {
         // Given
         final List<String> expression = ['1', '+' '3'];
 
