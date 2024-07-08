@@ -74,9 +74,11 @@ void main() {
         final List<String> expression = ['1', '+' '+'];
         validator.validateReturnValue = false;
 
-        // When Then
-        expect(() => basicCalculator.calculate(expression),
-            throwsA(predicate((e) => e is SimpleBusinessException && e.exceptionMessage == ExceptionMessage.syntaxError)));
+        // When
+        final String result = basicCalculator.calculate(expression);
+
+        //Then
+        expect(result == ExceptionMessage.syntaxError.message, isTrue);
       });
 
       test(

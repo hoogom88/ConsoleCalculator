@@ -47,10 +47,10 @@ void main() {
         final List<Term> validExpression3 = [Number('123'), Multiplication(), Number('123')];
         final List<Term> validExpression4 = [Number('123'), Division(), Number('123')];
 
-        final String expectedResult1 = '246.0';
-        final String expectedResult2 = '0.0';
-        final String expectedResult3 = '15129.0';
-        final String expectedResult4 = '1.0';
+        final String expectedResult1 = '246';
+        final String expectedResult2 = '0';
+        final String expectedResult3 = '15129';
+        final String expectedResult4 = '1';
 
         // When
         final String result1 = expressionOperator.operate(validExpression1);

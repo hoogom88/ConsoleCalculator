@@ -18,7 +18,9 @@ class Number extends Operand {
   /// (longer than 15 characters are truncated)
   factory Number(String value) {
     if (!RegExp(r'[0-9]+[.]?[0-9]*').hasMatch(value)) throw SimpleBusinessException.invalidInput();
+
     String subString = value.length <= _maxLength ? value : value.substring(0, 14);
+    subString = subString.replaceAll(RegExp(r"([.]+0+)(?!.*\d)"), '');
     if (double.tryParse(subString) == null) throw SimpleBusinessException.invalidInput();
     return Number._(subString);
   }

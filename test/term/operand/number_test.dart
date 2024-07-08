@@ -46,7 +46,7 @@ void main() {
         final String numberUnderMaxLength1 = '12345678901234';
         final String numberUnderMaxLength2 = '12345678.9012';
         final String numberUnderMaxLength3 = '0.123456789012';
-        final String numberUnderMaxLength4 = '1234567890123.';
+        final String numberUnderMaxLength4 = '123456.00000';
 
         // When
         final result1 = Number(numberUnderMaxLength1);
@@ -62,7 +62,7 @@ void main() {
         expect(result3, isA<Number>());
         expect(result3.value, equals(numberUnderMaxLength3));
         expect(result4, isA<Number>());
-        expect(result4.value, equals(numberUnderMaxLength4));
+        expect(result4.value, equals('123456'));
       });
 
       test('Pass sliced string to Number if given string\'s length over 14', () {
