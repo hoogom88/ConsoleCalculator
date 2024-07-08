@@ -24,8 +24,15 @@ class BasicCalculator implements Calculator {
 
   @override
   String calculate(List<String> expression) {
-    List<Term> expressionTokens = _tokenizer.tokenize(expression);
-    if (!_expressionValidator.validate(expressionTokens)) throw SimpleBusinessException.syntaxError();
-    return _expressionEvaluator.operate(expressionTokens);
+    try {
+      List<Term> expressionTokens = _tokenizer.tokenize(expression);
+      if (!_expressionValidator.validate(expressionTokens)) throw SimpleBusinessException.syntaxError();
+      return _expressionEvaluator.operate(expressionTokens);
+    } catch (e) {
+      return switch (e) {
+        SimpleBusinessException s => s.exceptionMessage.message,
+        _ => SimpleBusinessException.undefinedError().exceptionMessage.message,
+      };
+    }
   }
 }
