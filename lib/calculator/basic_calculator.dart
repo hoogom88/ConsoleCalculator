@@ -5,7 +5,10 @@ import 'package:console_calculator/term/term.dart';
 import 'package:console_calculator/util/exception.dart';
 import 'package:console_calculator/util/tokenizer/tokenizer.dart';
 
-// Basic calculator perform calculate using ExpressionEvaluator and Tokenizer
+/// Basic calculator perform calculate using ExpressionEvaluator, Tokenizer, ExpressionValidator
+/// (it only support [operand, operation, operand] expression)
+/// operand : double format number, max length 14
+/// operation : _, -, /, *
 class BasicCalculator implements Calculator {
   final ExpressionEvaluator _expressionEvaluator;
   final Tokenizer _tokenizer;
