@@ -1,7 +1,7 @@
 import 'package:console_calculator/expression_evaluator/expression_evaluator.dart';
 import 'package:console_calculator/term/term.dart';
 
-class MockExpressionEvaluator implements ExpressionEvaluator {
+class MockExpressionEvaluator implements ExpressionOperator {
   int evaluateCallCount = 0;
   List<Term> evaluateParameter = [];
   double evaluateReturnValue = 0;

@@ -10,12 +10,12 @@ import 'package:console_calculator/util/tokenizer/tokenizer.dart';
 /// operand : double format number, max length 14
 /// operation : _, -, /, *
 class BasicCalculator implements Calculator {
-  final ExpressionEvaluator _expressionEvaluator;
+  final ExpressionOperator _expressionEvaluator;
   final Tokenizer _tokenizer;
   final ExpressionValidator _expressionValidator;
 
   BasicCalculator(
-      {required ExpressionEvaluator expressionEvaluator,
+      {required ExpressionOperator expressionEvaluator,
       required Tokenizer tokenizer,
       required ExpressionValidator expressionValidator})
       : _expressionEvaluator = expressionEvaluator,
