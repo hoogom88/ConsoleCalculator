@@ -69,7 +69,7 @@ void main() {
         expect(validator.validateCallCount, expectedCallCount);
       });
 
-      test('If ExpressionValidator.validate() == false, throw SimpleBusinessException.syntaxError()', () {
+      test('If ExpressionValidator.validate() == false, throw SimpleBusinessException(\'syntaxError\')', () {
         // Given
         final List<String> expression = ['1', '+' '+'];
         validator.validateReturnValue = false;

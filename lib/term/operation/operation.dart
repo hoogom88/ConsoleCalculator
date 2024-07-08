@@ -15,6 +15,6 @@ abstract class Operation extends Term {
   OperationType get operationType;
 
   /// Calculate value using Operands
-  /// (only valid operand is passed, already validated in previous process)
+  /// (parameter operands' element must be valid)
   Operand execute(List<Operand> operands);
 }

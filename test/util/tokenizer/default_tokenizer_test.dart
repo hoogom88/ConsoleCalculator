@@ -91,7 +91,7 @@ void main() {
       });
 
       // it can't tokenize character without [0-9]+[.]?[0-9]* and +,-/*
-      test('Throw SimpleBusinessException.invalidInput() if input Operand or Operation string is invalid', () {
+      test('Throw SimpleBusinessException(\'invalidInput\') if input Operand or Operation string is invalid', () {
         // Given
         final List<String> invalidExpression1 = ['1as', '+', '32'];
         final List<String> invalidExpression2 = ['145', ' ', '가나5'];
