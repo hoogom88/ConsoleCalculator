@@ -5,13 +5,13 @@ import 'package:console_calculator/util/exception.dart';
 class Operand extends Term {
   final double value;
   // allowed maxValue (length <= 14)
-  static const double _maxValue = 99999999999999;
+  static const double _maxValue = 14;
 
   Operand._(this.value);
 
-  /// Only value whose length is less than 15
+  /// Only value whose length is less than 15, not Nan, and finite
   factory Operand(double value) {
-    if (value > _maxValue || (value * -1) > _maxValue|| value.isNaN || value.isInfinite) throw SimpleBusinessException.overflow();
+    if (value.toString().length > _maxValue || value.isNaN || value.isInfinite) throw SimpleBusinessException.overflow();
     return Operand._(value);
   }
 
