@@ -17,7 +17,7 @@
 
 ## 설계 및 구조
 
-### 상속과 구현의 관계를 나타낸 class diagram
+### 상속과 구현의 관계를 나타낸 class diagram(enum 생략)
 <br/>
 
 ![diagram-7515475740708860016](https://github.com/hoogom88/ConsoleCalculator/assets/67893559/cae61044-ce3c-486d-b07f-ffe317e2f797)
